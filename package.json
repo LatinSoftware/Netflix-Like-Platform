@@ -1,0 +1,16 @@
+{
+  "name": "netflix-like-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "start:client": "pnpm --filter client dev",
+    "start:server": "pnpm --filter server start:server",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
