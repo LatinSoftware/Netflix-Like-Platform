@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
+
 @Module({
     imports: [
         TypeOrmModule.forRootAsync({
@@ -23,5 +24,6 @@ import { SnakeNamingStrategy } from "typeorm-naming-strategies";
             })
         }),
     ],
+   
 })
 export class DatabaseModule{}

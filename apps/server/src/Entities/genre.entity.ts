@@ -30,6 +30,10 @@ export class Genre implements AggregatedRoot {
         this.description = description || "";
     }
 
+    public static create(name: string, description?: string): Genre {
+        return new Genre(name, description);
+    }
+
     public addContent(content: Content): void {
         if (this.contents.find((c) => c.id === content.id)) {
             throw GenreError.contentAlreadyAssociated;
