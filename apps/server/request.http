@@ -1,6 +1,6 @@
 @rootUrl = http://localhost:3000
 
-## create a new genre
+### create a new genre
 POST {{rootUrl}}/genre
 Content-Type: application/json
 
@@ -8,3 +8,36 @@ Content-Type: application/json
     "name": "Action",
     "description": "Action movies involve a lot of excitement and adventure."
 }
+
+### create a new genre
+POST {{rootUrl}}/genre
+Content-Type: application/json
+
+{
+    "name": "Anime"
+}
+
+### filter genre
+GET {{rootUrl}}/genre
+Accept: application/json
+
+### filter genre
+GET {{rootUrl}}/genre?name=anime
+Accept: application/json
+
+### get genre by id
+GET {{rootUrl}}/genre/1
+Accept: application/json
+
+### update genre
+PATCH {{rootUrl}}/genre/1
+Content-Type: application/json
+
+{
+    "name": "Adventure",
+    "description": "Adventure movies involve a lot of excitement and exploration."
+}
+
+### delete genre
+DELETE {{rootUrl}}/genre/2
+Accept: application/json
