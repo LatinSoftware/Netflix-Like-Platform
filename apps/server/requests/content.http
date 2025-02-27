@@ -1,0 +1,17 @@
+@rootUrl = http://localhost:3000
+
+### create a new content
+POST {{rootUrl}}/content
+Content-Type: application/json
+
+{
+  "title": "Breaking Bad",
+  "description": "Un professor de química convertido en narcotraficante.",
+  "releaseDate": "2008-01-20",
+  "duration": 55,
+  "ageRating": 18,
+  "originalLanguage": "en",
+  "popularity": 0,
+  "category_id": 1,
+  "genre_ids": [3, 4]
+}
