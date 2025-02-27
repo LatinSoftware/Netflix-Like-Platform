@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
 import { AggregatedRoot } from "./aggregatedRoot";
 import { Genre } from "./genre.entity";
-import { CategoryEnum } from "./Enums/category.enum";
 import { ContentError } from "src/Shared/Messages/Errors/content.error";
 import { IsString, IsInt, IsEnum, IsDate, IsPositive, MaxLength, Min, Max, IsArray, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
+import { Category } from "./category.entity";
 
 @Entity()
 export class Content implements AggregatedRoot {
@@ -46,9 +46,9 @@ export class Content implements AggregatedRoot {
     @Max(100, { message: ContentError.validPopularity.message })
     popularity: number;
 
-    @Column({ type: "enum", enum: CategoryEnum })
-    @IsEnum(CategoryEnum, { message: ContentError.validCategory.message })
-    category: CategoryEnum;
+    @JoinTable()
+    @Type(() => Category)
+    category: Category;
 
     @ManyToMany(() => Genre, (genre) => genre.contents, { cascade: true })
     @JoinTable()
@@ -65,7 +65,7 @@ export class Content implements AggregatedRoot {
         ageRating: number,
         originalLanguage: string,
         popularity: number,
-        category: CategoryEnum,
+        category: Category,
         genres: Genre[]
     ) {
         this.title = title;
@@ -86,7 +86,7 @@ export class Content implements AggregatedRoot {
         duration: number,
         ageRating: number,
         originalLanguage: string,
-        category: CategoryEnum,
+        category: Category,
         genres: Genre[]
     ): Content {
         return new Content(
